@@ -201,3 +201,7 @@ dt = [
 for i in range(1,len(dt)):
     dt[i][0] = int(dt[i][0])
     dt[i][5] = int(dt[i][5])
+    for j in range(0,7):
+        e = dt[i][j]
+        if isinstance(e, str):
+            dt[i][j] = e.strip()
