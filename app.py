@@ -1,6 +1,30 @@
 from data2 import dt2 as dt
+from data import dt as dt2
 import pandas as pd
 import streamlit as st
+
+st.set_page_config(
+    page_title=f"SIH Problem-Statement",
+    page_icon="🪴",
+    layout="wide",
+)
+
+st.write("Developed by [Jitendra-Kumar](https://www.jitendra.me)")
+
+st.title("SIH Problem-Statement")
+
+st.write("This Web app is designed to analyse the problem statement of SIH 2023 in a fast and efficient way.")
+
+selected_year = st.selectbox("Select Year", ["2024", "2023"])
+
+if selected_year == "2023":
+    dt = dt2
+else:
+    dt = dt
+
+
+
+# st.wrtie("selected year: ", selected_year)
 
 df = pd.DataFrame(dt[1:], columns=dt[0])
 
@@ -28,18 +52,6 @@ domains = list(df[colnm[6]].unique())
 
 
 
-
-
-st.set_page_config(
-    page_title="SIH 2023 Problem-Statement",
-    page_icon="🪴",
-    layout="wide",
-)
-st.write("Developed by [Jitendra-Kumar](https://www.jitendra.me)")
-
-st.title("SIH 2024 Problem-Statement")
-
-st.write("This Web app is designed to analyse the problem statement of SIH 2023 in a fast and efficient way.")
 
 
 
