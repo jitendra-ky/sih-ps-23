@@ -4,7 +4,7 @@ import streamlit as st
 
 df = pd.DataFrame(dt[1:], columns=dt[0])
 
-colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Domain Bucket']
+colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Theme']
 
 sr = {
     0: df["S.No."],
@@ -13,7 +13,7 @@ sr = {
     3: df["Category"],
     4: df["PS Number"],
     5: df["Submitted Idea(s) Count"],
-    6: df["Domain Bucket"]
+    6: df["Theme"]
 }
 
 # List of categories
@@ -80,12 +80,12 @@ st.divider()
 # filter by column option
 options = st.multiselect(
     "select to columns to show",
-    ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Domain Bucket'],
+    colnm,
     [
         'S.No.', 
         'Category',   
         'PS Number' , 
-        'Domain Bucket',
+        'Theme',
         'Submitted Idea(s) Count',
         'Organization',   
         'Problem Statement Title'
