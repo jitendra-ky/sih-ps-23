@@ -3,6 +3,11 @@ from data import dt as dt2
 import pandas as pd
 import streamlit as st
 
+
+
+
+
+# labling and branding of page
 st.set_page_config(
     page_title=f"SIH Problem-Statement",
     page_icon="🪴",
@@ -15,6 +20,12 @@ st.title("SIH Problem-Statement")
 
 st.write("This Web app is designed to analyse the problem statement of SIH 2023 in a fast and efficient way.")
 
+
+
+
+
+
+# switch year filter
 selected_year = st.selectbox("Select Year", ["2024", "2023"])
 
 if selected_year == "2023":
@@ -24,8 +35,9 @@ else:
 
 
 
-# st.wrtie("selected year: ", selected_year)
 
+
+# create dataframe
 df = pd.DataFrame(dt[1:], columns=dt[0])
 
 colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Theme']
@@ -48,12 +60,6 @@ organizations = list(df[colnm[1]].unique())
 
 # List of domains
 domains = list(df[colnm[6]].unique())
-
-
-
-
-
-
 
 
 
