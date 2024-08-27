@@ -89,7 +89,6 @@ options = st.multiselect(
         'Category',   
         'PS Number' , 
         'Theme',
-        'Submitted Idea(s) Count',
         'Organization',   
         'Problem Statement Title'
     ],
