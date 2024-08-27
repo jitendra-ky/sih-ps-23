@@ -1,10 +1,10 @@
-from data2 import dt2 as dt
+from data import dt
 import pandas as pd
 import streamlit as st
 
 df = pd.DataFrame(dt[1:], columns=dt[0])
 
-colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Theme']
+colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Domain Bucket']
 
 sr = {
     0: df["S.No."],
@@ -13,7 +13,7 @@ sr = {
     3: df["Category"],
     4: df["PS Number"],
     5: df["Submitted Idea(s) Count"],
-    6: df["Theme"]
+    6: df["Domain Bucket"]
 }
 
 # List of categories
@@ -37,12 +37,9 @@ st.set_page_config(
 )
 st.write("Developed by [Jitendra-Kumar](https://www.jitendra.me)")
 
-st.title("SIH 2024 Problem-Statement")
+st.title("SIH 2023 Problem-Statement")
 
 st.write("This Web app is designed to analyse the problem statement of SIH 2023 in a fast and efficient way.")
-
-
-
 
 
 
@@ -83,12 +80,12 @@ st.divider()
 # filter by column option
 options = st.multiselect(
     "select to columns to show",
-    colnm,
+    ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Domain Bucket'],
     [
         'S.No.', 
         'Category',   
         'PS Number' , 
-        'Theme',
+        'Domain Bucket',
         'Submitted Idea(s) Count',
         'Organization',   
         'Problem Statement Title'
