@@ -47,28 +47,30 @@ st.write("This Web app is designed to analyse the problem statement of SIH 2023 
 
 
 # filter by rows
-row_filter = st.checkbox("activate filter by row")
+row_filter = st.checkbox("activate filter by row", help="by selecting this you can apply filter on rows")
 row_filtered_data = df
 if row_filter:
-    multi = st.checkbox("activate multi select", value=False)
+    multi = st.checkbox("activate multi select", value=False, help="by selecting this you can apply multiple filter on same row. like show me all the rows which have column vlaue xyz and abc")
     if multi:
-        category = st.multiselect("Select Category", categories, [])
-        organization = st.multiselect("Select Organization", organizations, [])
-        domain = st.multiselect("Select Domain", domains, [])
-        row_filtered_data = df[
-            (df[colnm[3]].isin(category)) & 
-            (df[colnm[1]].isin(organization)) & 
-            (df[colnm[6]].isin(domain))
-        ]
+        category = st.multiselect("Select Category", ["ALL"]+categories, ["ALL"])
+        organization = st.multiselect("Select Organization", ["ALL"]+organizations, ["ALL"])
+        domain = st.multiselect("Select Domain", ["ALL"]+domains, ["ALL"])
+        if "ALL" not in category:
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[3]].isin(category)]
+        if "ALL" not in organization:
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[1]].isin(organization)]
+        if "ALL" not in domain:
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[6]].isin(domain)]
     else:
-        category = st.selectbox("Select Category", categories)
-        organization = st.selectbox("Select Organization", organizations)
-        domain = st.selectbox("Select Domain", domains)
-        row_filtered_data = df[
-            (df[colnm[3]] == category) & 
-            (df[colnm[1]] == organization) & 
-            (df[colnm[6]] == domain)
-        ]
+        category = st.selectbox("Select Category", ["ALL"]+categories)
+        organization = st.selectbox("Select Organization", ["ALL"]+organizations)
+        domain = st.selectbox("Select Domain", ["ALL"]+domains)
+        if category  != "ALL":
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[3]] == category]
+        if organization != "ALL":
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[1]] == organization]
+        if domain != "ALL":
+            row_filtered_data = row_filtered_data[row_filtered_data[colnm[6]] == domain]
 
 
 
@@ -98,6 +100,6 @@ filtered_df = row_filtered_data[options]
 
 
 
-
+st.write("Total Problem Statement: ", len(filtered_df))
 st.dataframe(filtered_df)
 
