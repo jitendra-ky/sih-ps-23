@@ -39,6 +39,9 @@ else:
 
 # create dataframe
 df = pd.DataFrame(dt[1:], columns=dt[0])
+df["Problem Statement Title"] = df["Problem Statement Title"].str.replace("\n\n", "")
+df["Problem Statement Title"] = df["Problem Statement Title"].str.replace("\n", "◾")
+
 
 colnm = ['S.No.', 'Organization', 'Problem Statement Title', 'Category', 'PS Number', 'Submitted Idea(s) Count', 'Theme']
 
