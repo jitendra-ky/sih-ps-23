@@ -37,15 +37,18 @@ jobs:
 
       # Step 6: Set up Azure CLI
       - name: Set up Azure CLI
-        uses: azure/CLI-action@v1
+        uses: azure/cli@v1
         with:
-          azcliversion: 'latest'
+          inlineScript: |
+            az --version
 
-      # Step 7: Log in to Azure
+      # Step 7: Log in to Azure using individual secrets
       - name: Log in to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       # Step 8: Restart Azure Web App
       - name: Restart Azure Web App
