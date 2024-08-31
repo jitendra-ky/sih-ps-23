@@ -34,3 +34,20 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: |
           docker push jitenky/stapp3906:latest
+
+      # Step 6: Set up Azure CLI
+      - name: Set up Azure CLI
+        uses: azure/CLI-action@v1
+        with:
+          azcliversion: 'latest'
+
+      # Step 7: Log in to Azure
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Step 8: Restart Azure Web App
+      - name: Restart Azure Web App
+        run: |
+          az webapp restart --name st-sih-1134 --resource-group sih-ps
