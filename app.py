@@ -18,7 +18,7 @@ st.write("Developed by [Jitendra-Kumar](https://www.jitendra.me)")
 
 st.title("SIH Problem-Statement")
 
-st.write("This Web app is designed to analyse the problem statement of SIH in a fast and efficient way.😇😍")
+st.write("This Web app is designed to analyse the problem statement of SIH in a fast and efficient way.😇😍😀")
 
 
 
