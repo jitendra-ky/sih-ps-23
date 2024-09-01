@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build, Push Docker Image, Deploy, and Restart
 
 on:
   push:
@@ -69,9 +69,7 @@ jobs:
       - name: Login to Azure CLI
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}  # This should be a JSON object containing your credentials
 
       # Step 2: Restart the Azure Web App
       - name: Restart Azure Web App
