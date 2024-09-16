@@ -21,7 +21,8 @@ st.write("Developed by [Jitendra-Kumar](https://www.linkedin.com/in/jitendra-ky)
 avs.add_vertical_space(4)
 
 # set genai api configuration
-genai.configure(api_key="AIzaSyA7DPMBYgeuLSySIB7hDHNeF8qFahSjzB4")
+genai.configure(api_key="AIzaSyAP-9yCJv_GfwDWtbXw_8Z3Aek4wJRp2Pc")
+# genai.configure(api_key="AIzaSyA7DPMBYgeuLSySIB7hDHNeF8qFahSjzB4")
 # Create the model
 generation_config = {
     "temperature": 1,
